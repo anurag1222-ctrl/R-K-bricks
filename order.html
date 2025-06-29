@@ -2,9 +2,158 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Order Bricks - RK Bricks and Industries</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #8B0000;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .brick-types, .order-section, .order-form-section {
+      margin-bottom: 40px;
+    }
+
+    .brick-types h2, .order-section h2, .order-form-section h2 {
+      color: #8B0000;
+      margin-bottom: 20px;
+      font-size: 28px;
+      text-align: center;
+    }
+
+    .brick {
+      background: white;
+      border-left: 5px solid #8B0000;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 5px;
+    }
+
+    .brick h3 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .order-section p {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    .btn {
+      display: block;
+      width: fit-content;
+      margin: auto;
+      background-color: #8B0000;
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #a30000;
+    }
+
+    .order-form {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .order-form label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .order-form input, .order-form select, .order-form textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .order-form textarea {
+      resize: vertical;
+    }
+
+    .order-form button {
+      background-color: #8B0000;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .order-form button:hover {
+      background-color: #a30000;
+    }
+
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 24px;
+      }
+
+      .brick h3 {
+        font-size: 18px;
+      }
+
+      .brick p {
+        font-size: 14px;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -38,14 +187,67 @@
     </section>
 
     <section class="order-section">
-      <h2>Order Now</h2>
+      <h2>Quick Contact</h2>
       <p>Ready to place an order? Chat with us directly on WhatsApp or call us for assistance.</p>
       <a href="https://wa.me/919835823077" class="btn" target="_blank">Chat on WhatsApp</a>
+    </section>
+
+    <section class="order-form-section">
+      <h2>Order Form</h2>
+      <form class="order-form" id="whatsappForm" onsubmit="sendToWhatsApp(); return false;">
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" required>
+
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" required pattern="[0-9]{10}" placeholder="Enter 10-digit number">
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email">
+
+        <label for="type">Brick Type *</label>
+        <select id="type" required>
+          <option value="">-- Select Type --</option>
+          <option value="1 Number Wire-Cut Bricks">1 Number Wire-Cut Bricks</option>
+          <option value="Meetha Wire-Cut Bricks">Meetha Wire-Cut Bricks</option>
+          <option value="2 Number Wire-Cut Bricks">2 Number Wire-Cut Bricks</option>
+        </select>
+
+        <label for="quantity">Quantity (in pieces) *</label>
+        <input type="number" id="quantity" min="100" required>
+
+        <label for="location">Delivery Address / Village</label>
+        <textarea id="location" rows="3"></textarea>
+
+        <button type="submit">Send Order on WhatsApp</button>
+      </form>
     </section>
   </div>
 
   <footer>
     <p>&copy; 2025 RK Bricks and Industries. All rights reserved.</p>
   </footer>
+
+  <script>
+    function sendToWhatsApp() {
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const email = document.getElementById("email").value;
+      const type = document.getElementById("type").value;
+      const quantity = document.getElementById("quantity").value;
+      const location = document.getElementById("location").value;
+
+      const message = `New Brick Order Request:
+👤 Name: ${name}
+📞 Phone: ${phone}
+📧 Email: ${email || "N/A"}
+📦 Brick Type: ${type}
+🔢 Quantity: ${quantity}
+📍 Location: ${location || "N/A"}`;
+
+      const encodedMsg = encodeURIComponent(message);
+      const whatsappURL = `https://wa.me/919835823077?text=${encodedMsg}`;
+      window.open(whatsappURL, '_blank');
+    }
+  </script>
 </body>
 </html>
