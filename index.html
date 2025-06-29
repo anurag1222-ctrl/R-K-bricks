@@ -1,10 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="html" href="order.html">
   <title>RK Bricks and Industries</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #8B0000;
+      padding: 15px 30px;
+      color: white;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { color: #ffe4b5; }
+      to { color: #ffffff; text-shadow: 0 0 10px #ffcccb; }
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav-links li a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      background: url(https://lh3.googleusercontent.com/p/AF1QipPN0KX_7p-G58KDurXo-9knP4agiPDKwU10gNEQ=s1360-w1360-h1020-rw) no-repeat center center/cover;
+      color: rgb(248, 245, 245);
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #8B0000;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .plant-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .plant {
+      background-color: white;
+      padding: 20px;
+      width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+      }
+
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .plant {
+        width: 90%;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -25,11 +157,11 @@
       <h1>Welcome to RK Bricks and Industries</h1>
       <p>We don’t provide bricks; we provide trust for centuries.</p>
       <a href="#contact" class="btn">Contact Us</a>
-      <a href="order.html" class="btn">Place an Order</a>
+      <a href="order.html" class="btn" style="margin-left: 10px; background-color: #444;">Place an Order</a>
     </section>
 
     <section id="about" class="section">
-      <h2>About Us</h2> 
+      <h2>About Us</h2>
       <p>At RK Bricks and Industries, we specialize in manufacturing premium red clay bricks using traditional methods like <strong>Hawa Bhatta</strong> (fan-powered firing) for extended burn time to ensure uniform sreanth and durability. We enhance our clay with <strong>Pakhmel Machine</strong> to ensure uniform quality and high strength.</p>
       <p>Our bricks are known for their strength, durability, and wire-cut precision — ideal for all types of construction.</p>
     </section>
@@ -43,7 +175,7 @@
           <p>This is our personal, fully owned plant where we follow our traditional methods of brick manufacturing to deliver exceptional quality.</p>-
         </div>
         <div class="plant">
-         <h3>Partner Plant - Dulahinganj</h3>
+          <h3>Partner Plant - Dulahinganj</h3>
           <p>Located in Dulahinganj, this unit is operated in collaboration and meets the same RK Bricks quality standards.</p>
         </div>
         <div class="plant">
@@ -52,12 +184,12 @@
         </div>
       </div>
     </section>
-
+                                            
     <section id="contact" class="section">
       <h2>Contact Us</h2>
       <p><strong>Phone:</strong> +91 8116063205</p>
       <p><strong>Email:</strong> singhakash9262@gmail.com</p>
-      <a href="https://wa.me/919835823077" target="_blank" class="btn">Chat on WhatsApp</a>
+      <a href="https://wa.me/919262218521" target="_blank" class="btn">Chat on WhatsApp</a>
     </section>
   </main>
 
