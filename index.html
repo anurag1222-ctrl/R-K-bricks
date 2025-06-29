@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="html" href="order.html">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>RK Bricks and Industries</title>
   <style>
     * {
@@ -21,15 +20,18 @@
 
     header {
       background-color: #8B0000;
-      padding: 15px 30px;
       color: white;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
 
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
 
     .logo {
@@ -43,9 +45,23 @@
       to { color: #ffffff; text-shadow: 0 0 10px #ffcccb; }
     }
 
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .bar {
+      height: 3px;
+      width: 25px;
+      background-color: white;
+      margin: 4px 0;
+      border-radius: 5px;
+    }
+
     .nav-links {
-      list-style: none;
       display: flex;
+      list-style: none;
       gap: 20px;
     }
 
@@ -60,27 +76,26 @@
     }
 
     .hero {
-  position: relative;
-  background-image: url('rk-bricks-pic2.png') no-repeat center center/cover;
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-}
+      position: relative;
+      background-image: url('rk-bricks-pic2.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+    }
 
-.hero .overlay {
-  background-color: rgba(0, 0, 0, 0.5); /* darkens the image */
-  color: white;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
-}
-
-
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
 
     .hero h1 {
       font-size: 36px;
@@ -131,17 +146,26 @@
       padding: 20px;
     }
 
+    /* Mobile responsive styles */
     @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+      .nav-toggle {
+        display: flex;
       }
 
       .nav-links {
+        display: none;
         flex-direction: column;
-        width: 100%;
-        gap: 10px;
+        background-color: #8B0000;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        padding: 10px;
+        border-radius: 8px;
+      }
+
+      .nav-links.active {
+        display: flex;
       }
 
       .hero h1 {
@@ -158,7 +182,12 @@
   <header>
     <nav>
       <div class="logo">RK Bricks</div>
-      <ul class="nav-links">
+      <div class="nav-toggle" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <ul class="nav-links" id="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#plants">Plants</a></li>
@@ -169,19 +198,18 @@
   </header>
 
   <main>
-    <div class="hero">
-  <div class="overlay">
-    <h1>Welcome to RK Bricks and Industries</h1>
-    <p>We don’t provide bricks; we provide trust for centuries.</p>
-    <a href="#contact" class="btn btn-red">Contact Us</a>
-    <a href="order.html" class="btn btn-dark">Place an Order</a>
-  </div>
-</div>
-
+    <div class="hero" id="home">
+      <div class="overlay">
+        <h1>Welcome to RK Bricks and Industries</h1>
+        <p>We don’t provide bricks; we provide trust for centuries.</p>
+        <a href="#contact" class="btn">Contact Us</a>
+        <a href="order.html" class="btn">Place an Order</a>
+      </div>
+    </div>
 
     <section id="about" class="section">
       <h2>About Us</h2>
-      <p>At RK Bricks and Industries, we specialize in manufacturing premium red clay bricks using traditional methods like <strong>Hawa Bhatta</strong> (fan-powered firing) for extended burn time to ensure uniform sreanth and durability. We enhance our clay with <strong>Pakhmel Machine</strong> to ensure uniform quality and high strength.</p>
+      <p>At RK Bricks and Industries, we specialize in manufacturing premium red clay bricks using traditional methods like <strong>Hawa Bhatta</strong> (fan-powered firing) for extended burn time to ensure uniform strength and durability. We enhance our clay with <strong>Pakhmel Machine</strong> to ensure uniform quality and high strength.</p>
       <p>Our bricks are known for their strength, durability, and wire-cut precision — ideal for all types of construction.</p>
     </section>
 
@@ -191,7 +219,7 @@
         <div class="plant">
           <h3>Main Plant</h3>
           <p><strong>Location:</strong> Khushalpur, near Baampali</p>
-          <p>This is our personal, fully owned plant where we follow our traditional methods of brick manufacturing to deliver exceptional quality.</p>-
+          <p>This is our personal, fully owned plant where we follow our traditional methods of brick manufacturing to deliver exceptional quality.</p>
         </div>
         <div class="plant">
           <h3>Partner Plant - Dulahinganj</h3>
@@ -203,7 +231,7 @@
         </div>
       </div>
     </section>
-                                            
+
     <section id="contact" class="section">
       <h2>Contact Us</h2>
       <p><strong>Phone:</strong> +91 8116063205</p>
@@ -215,5 +243,12 @@
   <footer>
     <p>&copy; 2025 RK Bricks and Industries. All rights reserved.</p>
   </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('nav-links');
+      nav.classList.toggle('active');
+    }
+  </script>
 </body>
 </html>
